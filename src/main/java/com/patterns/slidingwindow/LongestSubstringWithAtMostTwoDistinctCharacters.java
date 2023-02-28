@@ -1,9 +1,9 @@
-package com.patterns.slidingwindow.longestsubstringwithatmosttwodistinctcharacters;
+package com.patterns.slidingwindow;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class LongestSubstringWithAtMostTwoDistinctCharacters {
 
     public static int lengthOfLongestSubstringTwoDistinct(String s) {
         if (s == null || s.length() == 0) {
