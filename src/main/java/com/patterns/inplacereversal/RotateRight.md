@@ -24,5 +24,12 @@ The number of nodes in the list is in the range [0, 500].
 
 # idea
 
-In this solution, we first calculate the length of the linked list and connect its last element to the head to form a circular linked list. Then, we find the new head by traversing the linked list from (len-k+1)th node. After that, we break the circular link by setting the next of (len-k)th node to null. Finally, we return the new head.
+We first check whether the given linked list is empty or contains only one element or k=0. If any of these conditions are satisfied, we return the head as it is because rotation is not possible in these cases.
+
+Then, we find the length of the linked list and adjust the value of k by taking its modulus with the length of the linked list. This is because if k is greater than the length of the linked list, it will cause unnecessary rotations.
+
+After that, we find the new tail and head of the linked list after rotating it k times to the right. We do this by traversing the linked list from the head until len-k-1th node to get the new tail and finding the next node of the new tail to get a new head.
+
+Finally, we rotate the linked list by setting the next of the original tail to the head and the next of the new tail to null. We return the new head as the result.
+
 This algorithm has a time complexity of O(n) and space complexity of O(1), where n is the length of the linked list.

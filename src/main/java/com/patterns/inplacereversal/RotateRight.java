@@ -7,31 +7,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RotateRight {
     public ListNode rotateRight(ListNode head, int k) {
-        if(head == null || head.next == null || k == 0) {
-            return head;
-        }
+        if (head == null || head.next == null || k == 0) return head;
 
+        // Get the length of the linked list
         int len = 1;
-        ListNode curr = head;
-        while(curr.next != null) {
-            curr = curr.next;
+        ListNode tail = head;
+        while (tail.next != null) {
             len++;
-        }
-        curr.next = head;
-
-        k = k % len;
-        k = len - k;
-
-        while(k-- > 0) {
-            curr = curr.next;
+            tail = tail.next;
         }
 
-        head = curr.next;
-        curr.next = null;
+        // Adjust the value of k
+        k %= len;
+        if (k == 0) return head;
 
-        return head;
+        // Find the new tail and head
+        ListNode newTail = head;
+        for (int i = 0; i < len - k - 1; i++) {
+            newTail = newTail.next;
+        }
+        ListNode newHead = newTail.next;
+
+        // Rotate the list
+        tail.next = head;
+        newTail.next = null;
+
+        return newHead;
     }
-
     @Test
     public void testRotateRight() {
         ListNode node1 = new ListNode(1);
