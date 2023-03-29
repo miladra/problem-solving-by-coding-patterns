@@ -30,7 +30,7 @@ Follow-up: Can you solve the problem in O(1) extra memory space?
 
 # idea
 
-The solution you provided is a recursive solution to the problem.
+The solution I provided is a recursive solution to the problem.
 It works by first counting the number of nodes in the current group of k nodes.
 If the count is equal to k, it means that there are enough nodes to reverse.
 The function then calls itself recursively with the next group of k nodes as input. After the 
