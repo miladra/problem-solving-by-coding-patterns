@@ -26,3 +26,4 @@ This Git repository is dedicated to problem-solving through coding patterns. The
 21. Topological Sort
 22. Backtracking
 23. Multi-threaded
+24. Hashing
