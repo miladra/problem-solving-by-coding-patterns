@@ -9,25 +9,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MovingAverage {
 
-    private Queue<Integer> queue;
-    private int windowSize;
-
-    public MovingAverage(int size){
-        queue = new LinkedList<>();
-        windowSize = size;
+    Queue<Integer> queue;
+    int capacity;
+    double sum;
+    public MovingAverage(int size) {
+        this.queue = new LinkedList<>();
+        this.capacity = size;
+        this.sum = 0;
     }
 
-    public double next(int val){
-        double sum = 0;
+    public double next(int val) {
+        if(queue.size() == capacity){
+            sum -= queue.poll();
+        }
+        sum += val;
         queue.offer(val);
-
-        if(queue.size() > windowSize){
-            queue.poll();
-        }
-        for(int num : queue){
-            sum += num;
-        }
-
         return sum / queue.size();
     }
 
