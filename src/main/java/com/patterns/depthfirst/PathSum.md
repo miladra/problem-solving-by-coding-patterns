@@ -8,7 +8,9 @@ A leaf is a node with no children.
 # Idea
 
 Clarifying questions:
-Is the tree a binary search tree or a general binary tree?
+Can the binary tree have duplicate values?
+Can the values in the binary tree be negative?
+Is the binary tree guaranteed to be non-empty?
 Are the values in the tree integers or can they be floating-point numbers also?
 What should be the return value if the root is null?
 
