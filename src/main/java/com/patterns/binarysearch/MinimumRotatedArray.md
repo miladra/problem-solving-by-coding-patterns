@@ -36,3 +36,18 @@ n == nums.length
 -5000 <= nums[i] <= 5000
 All the integers of nums are unique.
 nums is sorted and rotated between 1 and n times.
+
+# idea
+
+To clarify the problem, here are some possible questions and answers:
+
+Can the array contain duplicate elements?
+What should the function return if the input array is empty?
+Is it guaranteed that the input array is sorted in ascending order before being rotated?
+
+Approach:
+we can use binary search to find the minimum element of the array. We will compare the middle element with the last element of the array to determine which half to search next. If the middle element is greater than the last element, then it means the minimum element is in the right half of the array. Otherwise, it is in the left half of the array.
+
+The time complexity of this solution is O(log n) since we are dividing the search space in half in each iteration of the while loop.
+The space complexity is O(1) since we are only using a constant amount of extra space to store the left and right pointers.
+
