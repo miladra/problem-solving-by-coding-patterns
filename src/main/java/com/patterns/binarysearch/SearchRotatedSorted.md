@@ -34,4 +34,17 @@ nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 
 # idea
+
+Can we assume the array is always sorted in ascending order before rotation?
+Can there be duplicates in the given array?
+What should be the output if the target element occurs multiple times in the array?
+
+Approach:
+The idea is to use binary search to find the target element in the rotated sorted array. We start by finding the pivot element (the smallest element in the array). Once we have found the pivot, we can divide the array into two parts, both of which are sorted in ascending order. Then, we can perform a binary search on either the left or right subarray depending on whether the target element lies within the range of the left or right subarray. If we find the target element, we return its index, else we return -1.
 The time complexity of this algorithm is O(log n) because we are dividing the search space in half in each iteration.
+
+
+Time complexity and space complexity:
+The time complexity of this algorithm is O(log n) since we are performing binary search twice, once to find the pivot and once to find the target element. 
+The space complexity is O(1) since we are not using any extra space apart from a few variables.
+
