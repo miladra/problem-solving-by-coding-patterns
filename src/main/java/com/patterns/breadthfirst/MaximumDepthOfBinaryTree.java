@@ -8,7 +8,6 @@ import java.util.Queue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MaximumDepthOfBinaryTree {
-
     //DFS
     public int maximumDepthOfBinaryTreeDFS(TreeNode root){
 
@@ -114,20 +113,5 @@ public class MaximumDepthOfBinaryTree {
 
         assertEquals(expectedDepth, actualDepth);
     }
-
-
 }
-
- class TreeNode {
- int val;
- TreeNode left;
- TreeNode right;
- TreeNode() {}
- TreeNode(int val) { this.val = val; }
- TreeNode(int val, TreeNode left, TreeNode right) {
- this.val = val;
- this.left = left;
- this.right = right;
- }
- }
 

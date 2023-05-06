@@ -1,10 +1,9 @@
 package com.patterns.breadthfirst;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class BinaryTreeLevelOrder {
         public List<List<Integer>> levelOrder2(TreeNode root) {
@@ -35,7 +34,6 @@ public class BinaryTreeLevelOrder {
 
             return res;
         }
-
         public List<List<Integer>> levelOrder(TreeNode root) {
 
             List<List<Integer>> result = new ArrayList<List<Integer>>();
@@ -83,55 +81,4 @@ public class BinaryTreeLevelOrder {
 
             return result;
         }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
-
-    @Test
-    public void testLevelOrder2() {
-        // Test case 1: Normal binary tree
-        TreeNode root1 = new TreeNode(3);
-        root1.left = new TreeNode(9);
-        root1.right = new TreeNode(20);
-        root1.right.left = new TreeNode(15);
-        root1.right.right = new TreeNode(7);
-        List<List<Integer>> expected1 = Arrays.asList(
-                Arrays.asList(3),
-                Arrays.asList(9, 20),
-                Arrays.asList(15, 7)
-        );
-        assertEquals(expected1, levelOrder2(root1));
-        assertEquals(expected1, levelOrder(root1));
-
-        // Test case 2: Empty tree
-        TreeNode root2 = null;
-        List<List<Integer>> expected2 = new ArrayList<>();
-        assertEquals(expected2, levelOrder2(root2));
-        assertEquals(expected2, levelOrder(root2));
-
-        // Test case 3: Tree with one node
-        TreeNode root3 = new TreeNode(1);
-        List<List<Integer>> expected3 = Arrays.asList(
-                Arrays.asList(1)
-        );
-        assertEquals(expected3, levelOrder2(root3));
-        assertEquals(expected3, levelOrder(root3));
-    }
 }
