@@ -31,10 +31,15 @@ Each element in nums appears once or twice.
 
 # idea
 
-The algorithm starts by initializing an empty result list. Then it iterates through each element in the input array. For each element, it calculates an index by taking the absolute value of the current element and subtracting 1. This is because the values in the input array are in the range [1,n], but array indices start from 0.
+Questions to clarify the problem:
+Can the input array be modified?
+Is the order of the output important?
+Assuming that the input array can be modified and the order of the output is not important, here is an approach to solve this problem:
 
-Next, it checks if the value at that calculated index is negative. If it is, it means that we have seen this value before and should add it to our result list. The value added to the result list is calculated by taking the absolute value of index+1. This reverses our earlier calculation of index and gives us back our original value.
+Approach:
+Since all elements in the array are in the range [1, n], we can use the index of the array to keep track of the elements that have been seen.
+For each element in the array, we can negate the value at the index corresponding to that element. If the value at that index is already negative, it means that we have seen this element before and it is a duplicate.
 
-Finally, we negate the value at that calculated index to mark it as seen. This way, if we encounter this same value again later on in our iteration through the input array, we will know that we have seen it before because its corresponding index will be negative.
-
-This algorithm runs in O(n) time because we only iterate through each element in
+Time and space complexity:
+The time complexity of this solution is O(n) since we are iterating over the array once.
+The space complexity is O(1) since we are not using any extra space apart from the result list.

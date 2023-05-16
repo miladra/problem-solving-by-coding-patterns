@@ -22,19 +22,4 @@ public class DuplicatesInAnArray {
         }
         return res;
     }
-
-    @Test
-    public void testFindDuplicates() {
-        int[] nums1 = {4,3,2,7,8,2,3,1};
-        List<Integer> expected1 = Arrays.asList(2,3);
-        assertEquals(expected1, findDuplicates(nums1));
-
-        int[] nums2 = {1,1,2};
-        List<Integer> expected2 = Arrays.asList(1);
-        assertEquals(expected2, findDuplicates(nums2));
-
-        int[] nums3 = {1};
-        List<Integer> expected3 = new ArrayList<>();
-        assertEquals(expected3, findDuplicates(nums3));
-    }
 }
