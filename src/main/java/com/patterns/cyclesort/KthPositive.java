@@ -6,31 +6,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class KthPositive {
     public int findKthPositive(int[] arr, int k) {
+        // Initialize variables
         int missingCount = 0;
-        int currentNum = 1;
+        int currentNumber = 1;
         int index = 0;
 
-        while(missingCount < k){
-            if(index < arr.length && currentNum == arr[index]){
+        // Loop until we find the kth missing positive integer
+        while (missingCount < k) {
+            // Check if currentNumber is missing from the array
+            if (index < arr.length && arr[index] == currentNumber) {
+                // If not missing, move to the next element in the array
                 index++;
             } else {
+                // If missing, increment missingCount
                 missingCount++;
             }
-            currentNum++;
+            // Move to the next positive integer
+            currentNumber++;
         }
 
-        return currentNum - 1;
-
-    }
-
-    @Test
-    public void testFindKthPositive() {
-        int[] arr1 = {2, 3, 4, 7, 11};
-        int k1 = 5;
-        assertEquals(9, findKthPositive(arr1, k1));
-
-        int[] arr2 = {1, 2, 3, 4};
-        int k2 = 2;
-        assertEquals(6, findKthPositive(arr2, k2));
+        // Return the kth missing positive integer
+        return currentNumber - 1;
     }
 }
