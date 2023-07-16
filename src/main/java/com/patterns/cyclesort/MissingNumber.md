@@ -32,7 +32,14 @@ All the numbers of nums are unique.
  
 # idea
 
-This solution uses the formula for the sum of an arithmetic sequence to calculate the expected sum of all numbers in the range [0, n]. 
-Then it calculates the actual sum of all numbers in the given array. 
-The difference between these two sums is the missing number.
-It has a time complexity of O(n) and a space complexity of O(1).
+Approach: 
+One way to solve this problem is to use the Gauss’ Formula, which states that the sum of the first n natural numbers is n(n+1)/2.
+Since we know that the input array contains n distinct numbers in the range [0, n],
+we can calculate the expected sum of all numbers in this range using the formula. Then,
+we can calculate the actual sum of all numbers in the input array and subtract it from the expected sum to find the missing number.
+
+Time and space complexity:
+Time complexity: O(n), where n is the length of the input array, since we need to iterate over all elements in the array to calculate the actual sum. 
+Space complexity: O(1), since we only use a constant amount of extra space to store variables.
+
+
