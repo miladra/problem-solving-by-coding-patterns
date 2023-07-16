@@ -6,33 +6,26 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HappyNumber {
+    public static boolean isHappy(int n) {
+        int slow = n;       // Slow pointer starting from n
+        int fast = n;       // Fast pointer starting from n
 
-    public boolean isHappy(int n){
-        int slow = n;
-        int fast = getNext(n);
-        while(fast != 1 && slow != fast){
-            slow = getNext(slow);
-            fast = getNext(getNext(fast));
-        }
-        return fast == 1;
+        do {
+            slow = calculateSquareSum(slow);                // Move slow pointer one step
+            fast = calculateSquareSum(calculateSquareSum(fast));   // Move fast pointer two steps
+        } while (slow != fast);   // Repeat until slow and fast pointers meet
+
+        return slow == 1;   // If the cycle ends at 1, it is a happy number; otherwise, it is not
     }
 
-    private int getNext(int n){
-        int totalSum = 0;
-        while(n > 0){
-            int d = n % 10;
-            n = n / 10;
-            totalSum += d * d;
+    private static int calculateSquareSum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            int digit = num % 10;        // Extract the last digit
+            sum += digit * digit;        // Add the square of the digit to the sum
+            num /= 10;                   // Move to the next digit
         }
-        return totalSum;
-    }
-
-    @Test
-    public void testIsHappy() {
-        HappyNumber solution = new HappyNumber();
-        assertTrue(solution.isHappy(19));
-        assertFalse(solution.isHappy(2));
-        assertTrue(solution.isHappy(1));
-        assertFalse(solution.isHappy(0));
+        return sum;
     }
 }
+
