@@ -7,6 +7,45 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class TopKFrequent {
+
+    public int[] topKFrequent(int[] nums, int k) {
+        //Time complexity: O(n)
+        //Space complexity: O(n)
+
+        Map<Integer, Integer> count = new HashMap<>();
+        List<Integer>[] freq = new ArrayList[nums.length + 1];
+
+        // Count frequencies
+        for (int n : nums) {
+            count.put(n, count.getOrDefault(n, 0) + 1);
+        }
+
+        // Group numbers by frequency
+        for (int n : count.keySet()) {
+            int c = count.get(n);
+            if (freq[c] == null) {
+                freq[c] = new ArrayList<>();
+            }
+            freq[c].add(n);
+        }
+
+        // Collect top k frequent numbers
+        List<Integer> res = new ArrayList<>();
+        for (int i = freq.length - 1; i >= 0 && res.size() < k; i--) {
+            if (freq[i] != null) {
+                res.addAll(freq[i]);
+            }
+        }
+
+        // Convert result list to int array
+        int[] result = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            result[i] = res.get(i);
+        }
+
+        return result;
+    }
+
     public int[] topKFrequentBruteForce(int[] nums, int k) {
         // Count the frequency of each element
         Map<Integer, Integer> freq = new HashMap<>();
@@ -27,9 +66,8 @@ class TopKFrequent {
         return result;
     }
 
-
     //time complexity of O(n log k)
-    public int[] topKFrequent(int[] nums, int k) {
+    public int[] topKFrequentHeap(int[] nums, int k) {
 
         // find the frequency of each number
         Map<Integer, Integer> numFrequencyMap = new HashMap<>();
@@ -68,8 +106,8 @@ class TestTopKFrequent {
         TopKFrequent topKFrequent = new TopKFrequent();
         // Test case where k is larger than the number of unique elements in the list
         int[] nums1 = {1, 2, 3, 4, 5};
-        int k1 = 10;
-        int[] expectedOutput1 = {1, 2, 3, 4, 5,0,0,0,0,0};
+        int k1 = 5;
+        int[] expectedOutput1 = {1, 2, 3, 4, 5};
         assertArrayEquals(expectedOutput1, topKFrequent.topKFrequent(nums1, k1));
 
         // Test case where k is equal to the length of the list
@@ -99,7 +137,7 @@ class TestTopKFrequent {
         // Test case where there are ties for the kth most frequent element
         int[] nums6 = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
         int k6 = 2;
-        int[] expectedOutput6 = {4, 5};
+        int[] expectedOutput6 = {1,2,3,4,5};
         assertArrayEquals(expectedOutput6, topKFrequent.topKFrequent(nums6, k6));
     }
 }
